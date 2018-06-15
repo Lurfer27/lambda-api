@@ -1,4 +1,4 @@
-package hello;
+package com.gsam.concepts;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
