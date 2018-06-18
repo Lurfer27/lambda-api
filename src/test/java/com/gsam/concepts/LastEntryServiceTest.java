@@ -24,11 +24,11 @@ public class LastEntryServiceTest {
         stringList.add("Three");
 
         // When
-        String actual = this.service.get(stringList);
+        LastEntry actual = this.service.get(stringList);
 
         // Then
-        Assert.assertNotNull("Given multiple list return string", actual);
-        Assert.assertEquals("Given multiple list return last entry string", "Three", actual);
+        Assert.assertNotNull("NOT NULL", actual);
+        Assert.assertEquals("EQUALS", "Three", actual.getValue());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class LastEntryServiceTest {
         ArrayList<String> stringList = null;
 
         // When
-        String actual = this.service.get(stringList);
+        LastEntry actual = this.service.get(stringList);
 
         // Then
         Assert.assertNull("Given null list return null string", actual);
@@ -49,7 +49,7 @@ public class LastEntryServiceTest {
         ArrayList<String> stringList = new ArrayList<>();
 
         // When
-        String actual = this.service.get(stringList);
+        LastEntry actual = this.service.get(stringList);
 
         // Then
         Assert.assertNull("Given empty list return null string", actual);
@@ -65,7 +65,7 @@ public class LastEntryServiceTest {
         stringList.remove(0);
 
         // When
-        String actual = this.service.get(stringList);
+        LastEntry actual = this.service.get(stringList);
 
         // Then
         Assert.assertNull("Given deleted list return null", actual);
