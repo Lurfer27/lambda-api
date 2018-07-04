@@ -32,12 +32,38 @@ public class LastEntryServiceTest {
     }
 
     @Test
+    public void getWithMultipleArray() {
+        // Given
+        String[] list = new String[]{"Uno","Dos","Tres","Cuatro","Cinco","Seiss","Siete","Ocho","Nueve","Diez"};
+
+        // When
+        String actual = this.service.get(list);
+
+        // Then
+        Assert.assertNotNull("NOT NULL", actual);
+        Assert.assertEquals("EQUALS", "Diez", actual);
+
+    }
+
+    @Test
     public void getWithNullList() {
         // Given
         ArrayList<String> list = null;
 
         // When
         String actual = this.service.get(list);
+
+        // Then
+        Assert.assertNull("Given null list return null string", actual);
+    }
+
+    @Test
+    public void getWithNullArray() {
+        // Given
+        String[] array = null;
+
+        // When
+        String actual = this.service.get(array);
 
         // Then
         Assert.assertNull("Given null list return null string", actual);

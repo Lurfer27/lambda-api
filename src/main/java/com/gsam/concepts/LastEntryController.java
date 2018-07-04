@@ -3,8 +3,6 @@ package com.gsam.concepts;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 public class LastEntryController {
 
@@ -16,7 +14,7 @@ public class LastEntryController {
 
     @PostMapping(value = "/last-entry")
     @ResponseStatus(value = HttpStatus.OK)
-    public Object lastEntry(@RequestBody List<Object> list) {
+    public Object lastEntry(@RequestBody Object[] list) {
         return this.lastEntryService.get(list);
     }
 /*
