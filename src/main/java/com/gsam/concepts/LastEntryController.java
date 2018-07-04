@@ -16,17 +16,14 @@ public class LastEntryController {
 
     @PostMapping(value = "/last-entry")
     @ResponseStatus(value = HttpStatus.OK)
-    public LastEntry greeting(@RequestBody List<String> stringList) {
-        LastEntry lastEntry = this.lastEntryService.get(stringList);
-        if (lastEntry == null) {
-            throw new RuntimeException(String.format("Unable to find the last entry from the following list :- %s", stringList));
-        }
-        return lastEntry;
+    public Object lastEntry(@RequestBody List<Object> list) {
+        return this.lastEntryService.get(list);
     }
-
+/*
     @ExceptionHandler(value = { RuntimeException.class })
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public Error handleRuntimeException(RuntimeException e) {
         return new Error(e.toString());
     }
+    */
 }

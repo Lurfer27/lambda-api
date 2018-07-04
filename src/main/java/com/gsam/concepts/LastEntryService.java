@@ -2,16 +2,19 @@ package com.gsam.concepts;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class LastEntryService {
 
-    public LastEntry get(List<String> stringList) {
-        if (stringList == null || stringList.isEmpty()) {
-            return null;
-        }
+    public <T> T get(List<T> objectList) {
+        List<T> list = Optional.ofNullable(objectList)
+                .orElseGet(ArrayList::new);
 
-        return new LastEntry(stringList.get(stringList.size() - 1));
+        return list.stream().parallel()
+                .reduce((first, second) -> second)
+                .orElse(null);
     }
 }

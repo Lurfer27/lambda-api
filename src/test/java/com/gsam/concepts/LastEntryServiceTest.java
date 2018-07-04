@@ -16,40 +16,40 @@ public class LastEntryServiceTest {
     }
 
     @Test
-    public void getWithMultipleStringList() {
+    public void getWithMultipleList() {
         // Given
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.add("One");
-        stringList.add("Two");
-        stringList.add("Three");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("One");
+        list.add("Two");
+        list.add("Three");
 
         // When
-        LastEntry actual = this.service.get(stringList);
+        String actual = this.service.get(list);
 
         // Then
         Assert.assertNotNull("NOT NULL", actual);
-        Assert.assertEquals("EQUALS", "Three", actual.getValue());
+        Assert.assertEquals("EQUALS", "Three", actual);
     }
 
     @Test
-    public void getWithNullStringList() {
+    public void getWithNullList() {
         // Given
-        ArrayList<String> stringList = null;
+        ArrayList<String> list = null;
 
         // When
-        LastEntry actual = this.service.get(stringList);
+        String actual = this.service.get(list);
 
         // Then
         Assert.assertNull("Given null list return null string", actual);
     }
 
     @Test
-    public void getWithEmptyStringList() {
+    public void getWithEmptyList() {
         // Given
-        ArrayList<String> stringList = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         // When
-        LastEntry actual = this.service.get(stringList);
+        String actual = this.service.get(list);
 
         // Then
         Assert.assertNull("Given empty list return null string", actual);
@@ -58,14 +58,14 @@ public class LastEntryServiceTest {
     @Test
     public void getWithDeletedListElements() {
         // Given
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.add("Four");
-        stringList.add("Five");
-        stringList.remove(0);
-        stringList.remove(0);
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Four");
+        list.add("Five");
+        list.remove(0);
+        list.remove(0);
 
         // When
-        LastEntry actual = this.service.get(stringList);
+        String actual = this.service.get(list);
 
         // Then
         Assert.assertNull("Given deleted list return null", actual);
