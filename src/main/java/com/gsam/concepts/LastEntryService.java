@@ -14,7 +14,7 @@ public class LastEntryService {
         return this.getNotNullList(list)
                 .stream()
                 .parallel()
-                .reduce((first, second) -> second)
+                .reduce((partialResult, currentElement) -> currentElement)
                 .orElse(null);
     }
 

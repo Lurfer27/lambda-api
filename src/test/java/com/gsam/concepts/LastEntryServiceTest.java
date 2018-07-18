@@ -1,5 +1,6 @@
 package com.gsam.concepts;
 
+import com.gsam.model.NumberEntity;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,5 +96,24 @@ public class LastEntryServiceTest {
 
         // Then
         Assert.assertNull("Given deleted list return null", actual);
+    }
+
+    @Test
+    public void multipleNonStrings() {
+        // Given
+        NumberEntity[] list = new NumberEntity[]{
+                new NumberEntity(1, "One", "Uno"),
+                new NumberEntity(2, "Two", "Dos")
+        };
+
+        // When
+        NumberEntity actual = this.service.get(list);
+
+        // Then
+        Assert.assertNotNull("NOT NULL", actual);
+        Assert.assertEquals("EQUAL value", 2, actual.getValue());
+        Assert.assertEquals("EQUAL inEnglish", "Two", actual.getInEnglish());
+        Assert.assertEquals("EQUAL inSpanish", "Dos", actual.getInSpanish());
+        Assert.assertEquals("EQUAL toString", "NumberEntity{value=2, inEnglish='Two', inSpanish='Dos'}", actual.toString());
     }
 }
