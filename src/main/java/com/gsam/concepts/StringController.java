@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ShortestToLongestController {
+public class StringController {
 
     private StringService stringService;
 
-    public ShortestToLongestController(StringService stringService) {
+    public StringController(StringService stringService) {
         this.stringService = stringService;
     }
 
-    @PostMapping(value = "/shortest-to-longest")
+    @PostMapping(value = "/sort-by-length-ascending")
     @ResponseStatus(value = HttpStatus.OK)
-    public String[] shortestToLongest(@RequestBody String[] list) {
-        this.stringService.shortestToLongest(list);
+    public String[] sortByLengthAscending(@RequestBody String[] list) {
+        this.stringService.sortByLengthAscending(list);
         return list;
     }
 }
